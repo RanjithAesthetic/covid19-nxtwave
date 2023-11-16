@@ -63,14 +63,14 @@ app.get("/states/:stateId/", async (request, response) => {
   const { stateId } = request.params;
   const getStateQuery = `SELECT * FROM state  WHERE state_id = ${stateId};`;
   const state = await db.get(getStateQuery);
-  response.send(convertObjectToResponseObject(state));
+  response.send(convertStateObjectToResponseObject(state));
 });
 
 app.get("/districts/:districtId/", async (request, response) => {
   const { districtId } = request.params;
   const getDistrictQuery = `SELECT * FROM district  WHERE district_id = ${districtId};`;
   const district = await db.get(getDistrictQuery);
-  response.send(convertObjectToResponseObject(district));
+  response.send(convertDistrictObjectToResponseObject(district));
 });
 
 app.put("/districts/:districtId/", async (request, response) => {
